@@ -15,7 +15,7 @@ function startGame() {
                 document.getElementById("completed_container").style.display = "block";
                 document.getElementById("start_game_button").style.display = "none";
                 document.getElementById("final_result").style.display = "none";
-                document.getElementById("leaverboard").innerHTML = "";
+                document.getElementById("leaderboard").innerHTML = "";
                 getArtist();
             }
             else {
