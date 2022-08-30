@@ -15,6 +15,7 @@ function startGame() {
                 document.getElementById("completed_container").style.display = "block";
                 document.getElementById("start_game_button").style.display = "none";
                 document.getElementById("final_result").style.display = "none";
+                document.getElementById("leaverboard").innerHTML = "";
                 getArtist();
             }
             else {
@@ -79,7 +80,8 @@ function submitSong() {
                         document.getElementById("completed_container").style.display = "none";
                         document.getElementById("final_result").style.display = "block";
                         document.getElementById("start_game_button").style.display = "block";
-                        document.getElementById("game_over_p").innerHTML = "Game over! You scored: " + score;
+                        document.getElementById("game_over_p").innerHTML = "Game over! You scored: " + score + ". Your highscore is: " + data_array[3];
+                        document.getElementById("leaderboard").innerHTML = data_array[4];
                     }
                 }
             }

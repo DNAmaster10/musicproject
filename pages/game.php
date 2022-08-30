@@ -28,6 +28,7 @@
         </div>
         <div id="final_result">
             <p id="game_over_p">Game over! You scored: 0</p>
+            <p id="leaderboard"></p>
         </div>
     </body>
     <script src="/pages/game.js"></script>
