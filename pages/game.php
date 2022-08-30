@@ -24,7 +24,6 @@
             <p id="points">Score: </p>
         </div>
         <div id="completed_container">
-            <p id="points">Score: 0</p>
             <p id="completed_songs"></p>
         </div>
         <div id="final_result">
