@@ -24,7 +24,39 @@
             echo ("no#-#no#-#".$_SESSION["score"]);
         }
         else {
-            echo ("no#-#yes#-#".$_SESSION["score"]);
+            $stmt = $conn->prepare("SELECT score FROM users WHERE username=?");
+            $stmt->bind_param("s", $_SESSION["username"]);
+            $stmt->execute();
+            $stmt->bind_result($result);
+            $stmt->fetch();
+            $stmt->close();
+            if (!$result) {
+                $stmt = $conn->prepare("UPDATE users SET highscore=?");
+                $stmt->bind_param("i", $_SESSION["score"]);
+                $stmt->execute();
+                $stmt->close();
+                $highscore = $_SESSION["score"];
+            }
+            else {
+                if ($result < $_SESSION["score"]) {
+                    $stmt = $conn->prepare("UPDATE user SET highscore=?");
+                    $stmt->bind_param("i", $_SESSION["score"]);
+                    $stmt->execute();
+                    $stmt->close();
+                    $highscore = $_SESSION["score"];
+                }
+                else {
+                    $highscore = $result;
+                }
+            }
+            $leaderboard_string = "#-#";
+            $stmt = $conn->prepare("SELECT username,points FROM users ORDER BY points ASC LIMIT 5");
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_assoc()) {
+                $leaderboard_string = $leaderboard_string."<br>".$row["username"].": ".$row["points"];
+            }
+            echo ("no#-#yes#-#".$_SESSION["score"]."#-#".$highscore.$leaderboard_string);
         }
     }
     
