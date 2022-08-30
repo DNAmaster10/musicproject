@@ -60,7 +60,8 @@ function submitSong() {
                     document.getElementById("first_letter").innerHTML = "First letter of song: ";
                     document.getElementById("song_input_box").value = "";
                     document.getElementById("attempts_left").innerHTML = "Attempts left: 2";
-                    document.getElementById("completed_container").innerHTML += "\n" + artist + ", " + currentSong;
+                    document.getElementById("completed_container").innerHTML += "<br>" + artist + ", " + currentSong;
+                    document.getElementById("points").innerHTML = "Score: " + score;
                     getArtist();
                 }
                 else if (data_array[0] == "no") {
@@ -69,7 +70,7 @@ function submitSong() {
                     }
                     else {
                         var score = data_array[2];
-                        document.getElementById("artist_name") = "Artist: ";
+                        document.getElementById("artist_name").innerHTML = "Artist: ";
                         document.getElementById("first_letter").innerHTML = "First letter of song: ";
                         document.getElementById("song_input_box").value = "";
                         document.getElementById("attempts_left").innerHTML = "Attempts left: 2";
