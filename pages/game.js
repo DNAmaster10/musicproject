@@ -11,10 +11,10 @@ function startGame() {
         success: function(data) {
             if (data == "connected") {
                 console.log("Started.");
-                document.getElementById("game_container").style.visibility = "block";
-                document.getElementById("completed_container").style.visibility = "block";
-                document.getElementById("start_game_button").style.visibility = "none";
-                document.getElementById("final_result").style.visibility = "none";
+                document.getElementById("game_container").style.display = "block";
+                document.getElementById("completed_container").style.display = "block";
+                document.getElementById("start_game_button").style.display = "none";
+                document.getElementById("final_result").style.display = "none";
                 getArtist();
             }
             else {
@@ -30,7 +30,6 @@ function getArtist() {
         url: "/pages/handle/get_artist_handle.php",
         type: "GET",
         success: function(data) {
-            console.log(data);
             var data_array = data.split("#-#");
             var artist = data_array[0];
             var song_char = data_array[1];
