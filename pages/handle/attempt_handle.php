@@ -54,7 +54,7 @@
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                $leaderboard_string = $leaderboard_string."<br>".$row["username"].": ".$row["points"];
+                $leaderboard_string = $leaderboard_string."<br>".$row["username"].": ".$row["highscore"];
             }
             echo ("no#-#yes#-#".$_SESSION["score"]."#-#".$highscore.$leaderboard_string);
         }
