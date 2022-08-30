@@ -14,6 +14,7 @@ function startGame() {
                 document.getElementById("game_container").style.visibility = "block";
                 document.getElementById("completed_container").style.visibility = "block";
                 document.getElementById("start_game_button").style.visibility = "none";
+                document.getElementById("final_result").style.visibility = "none";
                 getArtist();
             }
             else {
@@ -51,9 +52,37 @@ function submitSong() {
             success: function(data) {
                 var data_array = data.split("#-#");
                 if (data_array[0] == "yes") {
-                    
+                    var artist = data_array[1];
+                    var currentSong = data_array[2];
+                    var score = data_array[3];
+
+                    document.getElementById("artist_name").innerHTML = "Artist: ";
+                    document.getElementById("first_letter").innerHTML = "First letter of song: ";
+                    document.getElementById("song_input_box").value = "";
+                    document.getElementById("attempts_left").innerHTML = "Attempts left: 2";
+                    document.getElementById("completed_container").innerHTML += "\n" + artist + ", " + currentSong;
+                    getArtist();
+                }
+                else if (data_array[0] == "no") {
+                    if (data_array[1] == "no") {
+                        document.getElementById("attempts_left").innerHTML = "Attempts left: 1";
+                    }
+                    else {
+                        var score = data_array[2];
+                        document.getElementById("artist_name") = "Artist: ";
+                        document.getElementById("first_letter").innerHTML = "First letter of song: ";
+                        document.getElementById("song_input_box").value = "";
+                        document.getElementById("attempts_left").innerHTML = "Attempts left: 2";
+                        document.getElementById("completed_container").innerHTML = "";
+                        document.getElementById("game_container").style.display = "none";
+                        document.getElementById("completed_container").style.display = "none";
+                        document.getElementById("final_result").style.display = "block";
+                        document.getElementById("start_game_button").style.display = "block";
+                        document.getElementById("game_over_p").innerHTML = "Game over! You scored: " + score;
+                    }
                 }
             }
         });
     }
 }
+init();

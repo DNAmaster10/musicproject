@@ -7,13 +7,13 @@
     if (strtolower($_SESSION["current_song"]) == $entered_song && !$_SESSION["attempts"] == 1) {
         $_SESSION["attempts"] = $_SESSION["attempts"] - 1;
         $_SESSION["score"] = $_SESSION["score"] + 2;
-        echo ("yes#-#".$_SESSION["current_artist"]."#-#".$_SESSION["current_song"]."#-#".strval($_SESSION["score"]));
+        echo ("yes#-#".$_SESSION["current_artist"]."#-#".$_SESSION["current_song"]."#-#".strval($_SESSION["score"]."#-#".strval($_SESSION["attempts"])));
         die();
     }
     else if (strtolower($_SESSION["current_song"]) == $entered_song) {
         unset ($_SESSION["attempts"]);
         $_SESSION["score"] = $_SESSION["score"] + 1;
-        echo ("yes#-#".$_SESSION["current_artist"]."#-#".$_SESSION["current_song"]."#-#".strval($_SESSION["score"]));
+        echo ("yes#-#".$_SESSION["current_artist"]."#-#".$_SESSION["current_song"]."#-#".strval($_SESSION["score"]."#-#".strval($_SESSION["attempts"])));
         unset ($_SESSION["current_artist"]);
         unset ($_SESSION["current_song"]);
         die();
@@ -21,10 +21,10 @@
     else {
         if ($_SESSION["attempts"] == 2) {
             $_SESSION["attempts"] = 1;
-            echo ("no#-#no");
+            echo ("no#-#no#-#".$_SESSION["score"]);
         }
         else {
-            echo ("no#-#yes");
+            echo ("no#-#yes#-#".$_SESSION["score"]);
         }
     }
     
