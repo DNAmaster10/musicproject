@@ -31,16 +31,16 @@
             $stmt->fetch();
             $stmt->close();
             if (!$result) {
-                $stmt = $conn->prepare("UPDATE users SET highscore=?");
-                $stmt->bind_param("i", $_SESSION["score"]);
+                $stmt = $conn->prepare("UPDATE users SET highscore=? WHERE username=?");
+                $stmt->bind_param("is", $_SESSION["score"], $_SESSION["username"]);
                 $stmt->execute();
                 $stmt->close();
                 $highscore = $_SESSION["score"];
             }
             else {
                 if ($result < $_SESSION["score"]) {
-                    $stmt = $conn->prepare("UPDATE users SET highscore=?");
-                    $stmt->bind_param("i", $_SESSION["score"]);
+                    $stmt = $conn->prepare("UPDATE users SET highscore=? WHERE username=?");
+                    $stmt->bind_param("is", $_SESSION["score"],$_SESSION["username"]);
                     $stmt->execute();
                     $stmt->close();
                     $highscore = $_SESSION["score"];
