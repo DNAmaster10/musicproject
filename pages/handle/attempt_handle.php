@@ -24,7 +24,7 @@
             echo ("no#-#no#-#".$_SESSION["score"]);
         }
         else {
-            $stmt = $conn->prepare("SELECT score FROM users WHERE username=?");
+            $stmt = $conn->prepare("SELECT highscore FROM users WHERE username=?");
             $stmt->bind_param("s", $_SESSION["username"]);
             $stmt->execute();
             $stmt->bind_result($result);
