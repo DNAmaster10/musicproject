@@ -10,6 +10,7 @@
         header ("Location: /pages/login.php");
         die();
     }
+    include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
 
     $username = $conn->real_escape_string($_POST["username"]);
     $password = $conn->real_escape_string($_POST["password"]);
