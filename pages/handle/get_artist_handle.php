@@ -17,6 +17,7 @@
         $song = $row["song"];
         $song_char = $song[0];
         $_SESSION["current_song"] = $song;
+        $_SESSION["current_artist"] = $row["artist"];
         $return_string = $row["artist"]."#-#".$song_char;
     }
     echo $return_string;

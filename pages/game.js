@@ -39,16 +39,21 @@ function getArtist() {
     });
 }
 function submitSong() {
-    var entered_song = document.getElementById("song_input_box").value;
-    entered_song = entered_song.toLowerCase();
-    $.ajax({
-        url: "/pages/handle/attempt_handle.php",
-        type: "GET",
-        data: {
-            entered_song: entered_song
-        },
-        success: function(data) {
-
-        }
-    });
+    if (document.getElementById("song_input_box").value.length > 0) {
+        var entered_song = document.getElementById("song_input_box").value;
+        entered_song = entered_song.toLowerCase();
+        $.ajax({
+            url: "/pages/handle/attempt_handle.php",
+            type: "GET",
+            data: {
+                entered_song: entered_song
+            },
+            success: function(data) {
+                var data_array = data.split("#-#");
+                if (data_array[0] == "yes") {
+                    
+                }
+            }
+        });
+    }
 }
