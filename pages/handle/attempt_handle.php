@@ -39,7 +39,7 @@
             }
             else {
                 if ($result < $_SESSION["score"]) {
-                    $stmt = $conn->prepare("UPDATE user SET highscore=?");
+                    $stmt = $conn->prepare("UPDATE users SET highscore=?");
                     $stmt->bind_param("i", $_SESSION["score"]);
                     $stmt->execute();
                     $stmt->close();
