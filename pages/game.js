@@ -30,6 +30,7 @@ function getArtist() {
         url: "/pages/handle/get_artist_handle.php",
         type: "GET",
         success: function(data) {
+            console.log(data);
             var data_array = data.split("#-#");
             var artist = data_array[0];
             var song_char = data_array[1];
