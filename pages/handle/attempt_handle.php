@@ -50,7 +50,7 @@
                 }
             }
             $leaderboard_string = "#-#";
-            $stmt = $conn->prepare("SELECT username,highscore FROM users ORDER BY highscore ASC LIMIT 5");
+            $stmt = $conn->prepare("SELECT username,highscore FROM users ORDER BY highscore DESC LIMIT 5");
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
